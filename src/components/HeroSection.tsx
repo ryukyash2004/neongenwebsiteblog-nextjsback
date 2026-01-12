@@ -13,14 +13,14 @@ const HeroSection = () => {
         muted
         loop
         playsInline
-        className="absolute right-2 top-1/2 transform -translate-y-1/2 w-[28rem] h-80 object-cover opacity-40 z-0 rounded-3xl mix-blend-screen filter blur-md"
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 w-64 sm:w-80 md:w-[28rem] h-64 sm:h-80 md:h-80 object-cover opacity-40 z-0 rounded-3xl mix-blend-screen filter blur-md"
       >
         <source src="/vid.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
       {/* Hero Content */}
-      <div className="text-left max-w-sm ml-8 z-20">
+      <div className="text-left max-w-xs sm:max-w-sm ml-4 sm:ml-8 z-20">
         {/* Badge */}
         <motion.div
           initial={{ scale: 0, opacity: 0 }}

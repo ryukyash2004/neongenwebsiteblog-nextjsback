@@ -132,8 +132,22 @@ const Pricing = () => {
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <TabsList className="grid w-full grid-cols-2 bg-white/10 backdrop-blur-sm border border-white/10">
           {pricingTabs.map((tab) => (
-            <TabsTrigger key={tab.id} value={tab.id} className="text-white data-[state=active]:bg-blue-600">
-              {tab.label}
+            <TabsTrigger
+              key={tab.id}
+              value={tab.id}
+              disabled={tab.id === 'vpn'}
+              className={`text-white data-[state=active]:bg-blue-600 ${
+                tab.id === 'vpn' ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+            >
+              <span className="flex items-center space-x-2">
+                <span>{tab.label}</span>
+                {tab.id === 'vpn' && (
+                  <span className="px-2 py-0.5 bg-blue-600/20 text-blue-400 text-xs rounded-full border border-blue-500/30">
+                    Coming Soon
+                  </span>
+                )}
+              </span>
             </TabsTrigger>
           ))}
         </TabsList>

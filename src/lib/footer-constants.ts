@@ -14,13 +14,14 @@ export const footerData = {
     {
       title: "Product",
       links: [
-        { text: "VPN Dashboard", href: "https://platform.neonnextgeneration.com/" },
+        // { text: "VPN Dashboard", href: "https://platform.neonnextgeneration.com/" },
         { text: "Hosting", href: "https://hosting.neonnextgeneration.com/" }
       ]
     },
     {
       title: "Resources",
       links: [
+        { text: "FAQ", href: "/faq" },
         { text: "Terms", href: "/terms" },
         { text: "Privacy", href: "/privacy" }
       ]
@@ -35,7 +36,7 @@ export const footerData = {
     {
       title: "Contact",
       links: [
-        { text: "Contact Us", href: "/#contact" },
+        { text: "Contact Us", href: "/contact" },
         { text: "Open Source", href: "https://github.com/NeonNexGenPTY" }
       ]
     }
