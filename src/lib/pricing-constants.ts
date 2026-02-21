@@ -31,7 +31,7 @@ export const pricingPlans: Record<string, Plan[]> = {
       price: 0,
       period: 'month',
       features: [
-        { icon: 'cpu', text: '1 vCPU @ 3.8 GHz (shared)', color: 'text-green-400' },
+        { icon: 'cpu', text: '1 vCPU @ 2.4 GHz (shared)', color: 'text-green-400' },
         { icon: 'memory-stick', text: '2 GB DDR4 RAM', color: 'text-green-400' },
         { icon: 'hard-drive', text: '5 GB NVMe Storage', color: 'text-green-400' },
         { icon: 'mail-plus', text: '1 Email Account', color: 'text-green-400' },
@@ -51,7 +51,7 @@ export const pricingPlans: Record<string, Plan[]> = {
       price: 5,
       period: 'month',
       features: [
-        { icon: 'cpu', text: '3 vCPU @ 3.8 GHz (shared)', color: 'text-green-400' },
+        { icon: 'cpu', text: '3 vCPU @ 2.4  GHz (shared)', color: 'text-green-400' },
         { icon: 'memory-stick', text: '5 GB DDR4 RAM', color: 'text-green-400' },
         { icon: 'hard-drive', text: '20 GB NVMe Storage', color: 'text-green-400' },
         { icon: 'mail-plus', text: 'Unlimited Email Accounts', color: 'text-green-400' },
@@ -73,7 +73,7 @@ export const pricingPlans: Record<string, Plan[]> = {
       period: 'month',
       features: [
         { icon: 'check', text: 'Everything in the Basic Plan, plus:', color: 'text-green-400' },
-        { icon: 'cpu', text: '4 vCPU @ 3.8 GHz (shared)', color: 'text-green-400' },
+        { icon: 'cpu', text: '4 vCPU @ 2.4  GHz (shared)', color: 'text-green-400' },
         { icon: 'memory-stick', text: '8 GB DDR4 RAM', color: 'text-green-400' },
         { icon: 'hard-drive', text: '30 GB NVMe Storage', color: 'text-green-400' },
         { icon: 'check', text: '8 Domain Slots', color: 'text-green-400' },
@@ -94,7 +94,7 @@ export const pricingPlans: Record<string, Plan[]> = {
       period: 'month',
       features: [
         { icon: 'check', text: 'Everything in the Pro Plan, plus:', color: 'text-green-400' },
-        { icon: 'cpu', text: '5vCPU @ 3.8 GHz (shared)', color: 'text-green-400' },
+        { icon: 'cpu', text: '5vCPU @ 2.4  GHz (shared)', color: 'text-green-400' },
         { icon: 'memory-stick', text: '10 GB DDR4 RAM', color: 'text-green-400' },
         { icon: 'hard-drive', text: '100 GB NVMe Storage', color: 'text-green-400' },
         { icon: 'infinity', text: 'Unlimited Domain Slots', color: 'text-green-400' },
@@ -114,7 +114,7 @@ export const pricingPlans: Record<string, Plan[]> = {
       period: 'month',
       features: [
         { icon: 'check', text: 'Everything in the Enterprise Plan, plus:', color: 'text-green-400' },
-        { icon: 'cpu', text: '6 vCPU @ 3.8 GHz (shared)', color: 'text-green-400' },
+        { icon: 'cpu', text: '6 vCPU @ 2.4  GHz (shared)', color: 'text-green-400' },
         { icon: 'memory-stick', text: '15 GB DDR4 RAM', color: 'text-green-400' },
         { icon: 'hard-drive', text: '200 GB NVMe Storage', color: 'text-green-400' },
         { icon: 'mail-plus', text: 'Unlimited Email Accounts', color: 'text-green-400' },
@@ -133,7 +133,7 @@ export const pricingPlans: Record<string, Plan[]> = {
       price: 50,
       period: 'month',
       features: [
-        { icon: 'cpu', text: '8 vCPU @ 3.8 GHz (shared)', color: 'text-green-400' },
+        { icon: 'cpu', text: '8 vCPU @ 2.4  GHz (shared)', color: 'text-green-400' },
         { icon: 'memory-stick', text: 'Unmetered RAM usage (shared)', color: 'text-green-400' },
         { icon: 'hard-drive', text: '500 GB NVMe Storage', color: 'text-green-400' },
         { icon: 'mail-plus', text: 'Unlimited Email Accounts', color: 'text-green-400' },
@@ -156,7 +156,7 @@ export const pricingPlans: Record<string, Plan[]> = {
       period: 'year',
       features: [
         { icon: 'check', text: 'Everything in Free Plan, plus some upgrades:', color: 'text-green-400' },
-        { icon: 'cpu', text: '3 vCPU @ 3.8GHz', color: 'text-green-400' },
+        { icon: 'cpu', text: '3 vCPU @ 2.4 GHz', color: 'text-green-400' },
         { icon: 'memory-stick', text: '7GB DDR4 RAM', color: 'text-green-400' },
         { icon: 'hard-drive', text: '15GB NVMe Storage', color: 'text-green-400' },
         { icon: 'mail-plus', text: 'Unlimited Email Accounts', color: 'text-green-400' },
@@ -178,7 +178,7 @@ export const pricingPlans: Record<string, Plan[]> = {
       period: 'year',
       features: [
         { icon: 'check', text: 'Everything in Basic Plan, plus some upgrades:', color: 'text-green-400' },
-        { icon: 'cpu', text: '4 vCPU @ 3.8GHz', color: 'text-green-400' },
+        { icon: 'cpu', text: '4 vCPU @ 2.4 GHz', color: 'text-green-400' },
         { icon: 'memory-stick', text: '10GB DDR4 RAM', color: 'text-green-400' },
         { icon: 'hard-drive', text: '25GB NVMe Storage', color: 'text-green-400' },
         { icon: 'mail-plus', text: 'Unlimited Email Accounts', color: 'text-green-400' },
@@ -200,7 +200,7 @@ export const pricingPlans: Record<string, Plan[]> = {
       period: 'year',
       features: [
         { icon: 'check', text: 'Everything in Pro Plan, plus some upgrades:', color: 'text-green-400' },
-        { icon: 'cpu', text: '5 vCPU @ 3.8GHz', color: 'text-green-400' },
+        { icon: 'cpu', text: '5 vCPU @ 2.4 GHz', color: 'text-green-400' },
         { icon: 'memory-stick', text: '13GB DDR4 RAM', color: 'text-green-400' },
         { icon: 'hard-drive', text: '100GB NVMe Storage', color: 'text-green-400' },
         { icon: 'mail-plus', text: 'Unlimited Email Accounts', color: 'text-green-400' },
@@ -277,7 +277,7 @@ export const pricingPlans: Record<string, Plan[]> = {
       price: 1.50,
       period: 'month',
       features: [
-        { icon: 'cpu', text: '1 vCPU @ 3.8GHz', color: 'text-green-400' },
+        { icon: 'cpu', text: '1 vCPU @ 2.4 GHz', color: 'text-green-400' },
         { icon: 'memory-stick', text: '2.5GB DDR4 RAM', color: 'text-green-400' },
         { icon: 'hard-drive', text: '3GB NVMe Storage', color: 'text-green-400' },
         { icon: 'gauge', text: '50GB Bandwidth', color: 'text-yellow-400' },
