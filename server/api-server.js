@@ -3,9 +3,16 @@ import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import Database from "better-sqlite3";
 import { createHash } from "crypto";
+import { mkdirSync, existsSync } from "fs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+// Ensure database directory exists
+const dbDir = join(__dirname, "database");
+if (!existsSync(dbDir)) {
+  mkdirSync(dbDir, { recursive: true });
+}
 
 // Initialize SQLite database
 const dbPath = join(__dirname, "database", "dev.db");
@@ -204,12 +211,7 @@ const server = http.createServer(async (req, res) => {
         try {
           const { title, content, authorId, category, gradient } = JSON.parse(body || "{}");
           
-          const generatedSlug = title
-            .toLowerCase()
-            .trim()
-            .replace(/[^\w\s-]/g, '')
-            .replace(/[\s_-]+/g, '-')
-            .replace(/^-+|-+$/g, '');
+          const generatedSlug = generateSlug(title);
           
           const stmt = db.prepare(`
             INSERT INTO Post (title, slug, content, authorId, category, gradient) 
