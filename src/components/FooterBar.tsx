@@ -2,16 +2,11 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { DollarSign, Server, UserPlus } from 'lucide-react';
+import { UserPlus } from 'lucide-react';
 import { GlassEffect } from './GlassEffect';
 import { ThemeToggle } from './ui/ThemeToggle';
 
 const FooterBar = () => {
-  const links = [
-    { href: '/#pricing', label: 'Pricing', icon: DollarSign },
-    { href: 'https://hosting.neonnextgeneration.com/', label: 'Hosting', icon: Server }
-  ];
-
   return (
     
     <>
@@ -33,31 +28,24 @@ const FooterBar = () => {
         {/* Desktop Links */}
         <div className="hidden md:flex items-center space-x-6 text-sm">
           <a href="/" className="text-gray-300 hover:text-white transition-colors">Home</a>
-          <a href="/#pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
-          <a href="/Dashboard" className="text-gray-300 hover:text-white transition-colors">News</a>
-          <a href="https://hosting.neonnextgeneration.com/" target='_blank' className="text-gray-300 hover:text-white transition-colors">Hosting</a>
-         
+          <a href="https://dashboard.neonnextgeneration.com/" target="_blank" className="text-gray-300 hover:text-white transition-colors">Dashboard</a>
         </div>
 
         {/* Mobile Links */}
         <div className="flex md:hidden items-center space-x-4">
-          {links.map(link => (
-            <a
-              key={link.label}
-              href={link.href}
-              target={link.href.startsWith('http') ? '_blank' : undefined}
-              className="text-gray-300 hover:text-white transition-colors"
-            >
-              <link.icon className="w-5 h-5" />
-            </a>
-          ))}
+          <a href="/" className="text-gray-300 hover:text-white transition-colors">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+          </a>
+          <a href="https://dashboard.neonnextgeneration.com/" target="_blank" className="text-gray-300 hover:text-white transition-colors">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+          </a>
         </div>
 
-        {/* CTA Button */}
-        <button onClick={() => window.open("https://billing.neonnextgeneration.com/login")} className="bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors flex items-center justify-center">
-          <span className="hidden md:inline">Create Account</span>
-          <UserPlus className="md:hidden w-5 h-5" />
-        </button>
+        {/* Call to Action */}
+        <a href="https://dashboard.neonnextgeneration.com/signup" target="_blank" className="ml-6 bg-white/10 border border-white/20 px-4 py-2 rounded-full text-sm flex items-center space-x-2 hover:bg-white/20 transition-colors">
+          <UserPlus className="w-4 h-4" />
+          <span>Join Us</span>
+        </a>
       </GlassEffect>
     </motion.div>
     </>

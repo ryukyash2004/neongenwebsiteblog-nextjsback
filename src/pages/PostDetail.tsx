@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import Privacy from './Privacy';
 
 const PostDetail = () => {
   const { slug } = useParams();
@@ -9,7 +8,7 @@ const PostDetail = () => {
   useEffect(() => {
     // If you're still using mock data, you can find the post in mockPosts
     // Once the backend is fully wired, this fetch will work:
-    fetch(`http://localhost:3000/api/posts/${slug}`)
+    fetch(`/api/posts/${slug}`)
       .then(res => res.json())
       .then(data => setPost(data));
   }, [slug]);
