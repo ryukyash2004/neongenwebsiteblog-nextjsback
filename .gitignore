@@ -1,3 +1,26 @@
-node_modules
-
-/generated/prisma
+Dependencies and build outputs:
+node_modules/
+vendor/
+dist/
+build/
+*.min.js
+Environment and secret files:
+.env
+.env.local
+config/secrets.yml
+IDE and editor files:
+.vscode/
+.idea/
+*.swp
+*.swo
+System-generated files:
+.DS_Store
+Thumbs.db
+._*
+Log and temporary files:
+*.log
+*.tmp
+*.backup
+Generated or cache files:
+__pycache__/
+.sass-cache/
