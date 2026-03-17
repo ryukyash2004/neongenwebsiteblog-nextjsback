@@ -1,66 +1,55 @@
-import { Router } from 'express';
-import { createHash } from "crypto";
+import express from "express";
 
-const router = Router();
+export const setupAuthRoutes = (db) => {
+  const router = express.Router();
 
-export function setupAuthRoutes(db) {
-  // User Signup - POST /api/signup
-  router.post("/signup", (req, res) => {
-    try {
-      const { email, name, password } = req.body || {};
-      
-      if (!email || !password) {
-        return res.status(400).json({ error: "Email and password are required" });
-      }
+  router.post("/", async (req, res) => {
+    const { email, password } = req.body;
 
-      // Check if user already exists
-      const existingUser = db.prepare("SELECT id FROM User WHERE email = ?").get(email);
-      if (existingUser) {
-        return res.status(409).json({ error: "User with this email already exists" });
-      }
-
-      // Hash password using Node.js built-in crypto
-      const hashedPassword = createHash('sha256').update(password).digest('hex');
-      
-      const stmt = db.prepare("INSERT INTO User (email, name, password) VALUES (?, ?, ?)");
-      const result = stmt.run(email, name || "User", hashedPassword);
-      
-      const user = db.prepare("SELECT id, email, name FROM User WHERE id = ?").get(result.lastInsertRowid);
-      
-      res.status(201).json(user);
-    } catch (error) {
-      console.error("SIGNUP_ERROR:", error);
-      res.status(500).json({ error: error.message });
+    if (!email || !password) {
+      return res.status(400).json({ error: "Email and password are required" });
     }
-  });
 
-  // User Login - POST /api/login
-  router.post("/login", (req, res) => {
     try {
-      const { email, password } = req.body || {};
-      
-      if (!email || !password) {
-        return res.status(400).json({ error: "Email and password are required" });
+      // 1. Call the Main Site API to verify credentials
+      // Replace with your actual main site URL
+      const mainSiteResponse = await fetch("https://mainsite.com/api/auth/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!mainSiteResponse.ok) {
+        return res.status(401).json({ error: "Invalid credentials on main site." });
       }
 
-      const user = db.prepare("SELECT * FROM User WHERE email = ?").get(email);
-      if (!user) {
-        return res.status(401).json({ error: "Invalid email or password" });
-      }
+      // 2. Parse the authenticated user data and token from the Main Site
+      const { user, token } = await mainSiteResponse.json();
 
-      // Hash the provided password and compare with stored hash
-      const hashedPassword = createHash('sha256').update(password).digest('hex');
-      if (hashedPassword !== user.password) {
-        return res.status(401).json({ error: "Invalid email or password" });
-      }
+      // 3. Upsert (Update or Insert) the user in the local Blog database.
+      // We need them in the local DB so we can assign an 'authorId' to their comments.
+      const stmt = db.prepare(`
+        INSERT INTO User (email, name) 
+        VALUES (?, ?) 
+        ON CONFLICT(email) DO UPDATE SET 
+        name = excluded.name
+      `);
+      stmt.run(user.email, user.name);
 
-      // Return user without password
-      res.status(200).json({ id: user.id, email: user.email, name: user.name });
+      // Fetch the local user ID to use for comments
+      const localUser = db.prepare("SELECT id, email, name FROM User WHERE email = ?").get(user.email);
+
+      // 4. Send the successful response back to the Blog frontend
+      res.status(200).json({ 
+        user: localUser, 
+        token: token // Pass the token to the frontend so it can be used for subsequent requests
+      });
+
     } catch (error) {
-      console.error("LOGIN_ERROR:", error);
-      res.status(500).json({ error: error.message });
+      console.error("SSO Login Error:", error);
+      res.status(500).json({ error: "Internal server error during authentication" });
     }
   });
 
   return router;
-}
+};

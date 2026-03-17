@@ -14,13 +14,13 @@ const __dirname = dirname(__filename);
 const dbPath = join(__dirname, "database", "dev.db");
 const db = new Database(dbPath);
 
-// Create tables if they don't exist
 db.exec(`
   CREATE TABLE IF NOT EXISTS User (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     email TEXT UNIQUE NOT NULL,
     name TEXT,
-    password TEXT NOT NULL DEFAULT ''
+    password TEXT NOT NULL DEFAULT '',
+    role TEXT DEFAULT 'user'
   );
 
   CREATE TABLE IF NOT EXISTS Post (
@@ -34,6 +34,16 @@ db.exec(`
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     authorId INTEGER NOT NULL,
+    FOREIGN KEY (authorId) REFERENCES User(id)
+  );
+
+  CREATE TABLE IF NOT EXISTS Comment (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    content TEXT NOT NULL,
+    postId INTEGER NOT NULL,
+    authorId INTEGER NOT NULL,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (postId) REFERENCES Post(id),
     FOREIGN KEY (authorId) REFERENCES User(id)
   );
 `);
