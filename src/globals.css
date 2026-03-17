@@ -110,3 +110,76 @@
     background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
   }
 }
+
+
+/* Accessibility Utility Classes */
+@layer components {
+  /* Line Height Adjustment */
+  html {
+    --user-line-height: 1.5;
+  }
+  
+  body, p, h1, h2, h3, h4, h5, h6, li, span, a, div {
+    line-height: var(--user-line-height) !important;
+  }
+
+  /* Hide Images */
+  .hide-images img,
+  .hide-images picture,
+  .hide-images video,
+  .hide-images svg:not(.inline) {
+    display: none !important;
+  }
+
+  /* Large Cursor */
+  .large-cursor,
+  .large-cursor * {
+    cursor: crosshair !important;
+  }
+  
+  .large-cursor a,
+  .large-cursor button {
+    cursor: pointer !important;
+  }
+
+  /* Stop Animations */
+  .stop-animations *,
+  .stop-animations *::before,
+  .stop-animations *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Underline Links */
+  .underline-links a {
+    text-decoration: underline !important;
+    text-underline-offset: 2px !important;
+  }
+
+  /* Invert Colors */
+  .invert-colors {
+    filter: invert(1) !important;
+  }
+  
+  .invert-colors img,
+  .invert-colors video,
+  .invert-colors canvas {
+    filter: invert(1) !important;
+  }
+
+  /* Highlight Links */
+  .highlight-links a {
+    background-color: rgba(255, 255, 0, 0.2) !important;
+    border-bottom: 2px solid yellow !important;
+  }
+
+  /* High Contrast Mode */
+  .high-contrast-mode {
+    filter: contrast(1.2) !important;
+  }
+  
+  .high-contrast-mode a,
+  .high-contrast-mode button {
+    border: 2px solid currentColor !important;
+  }
+}

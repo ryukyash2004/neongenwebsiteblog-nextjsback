@@ -8,6 +8,7 @@ import FooterBar from "./components/FooterBar";
 import Footer from "./components/Footer";
 import Dashboard from "./pages/Home";
 import PostDetail from "./pages/PostDetail";
+import { AccessibilityMenu } from "./components/accessibilityMenu";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      {/* Move BrowserRouter to wrap all UI components */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Dashboard />} />
@@ -23,9 +25,12 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        
+        {/* Footers and Menus are now safely inside the Router */}
+        <FooterBar />
+        <Footer />
+        <AccessibilityMenu />
       </BrowserRouter>
-      <FooterBar />
-      <Footer />
     </TooltipProvider>
   </QueryClientProvider>
 );
